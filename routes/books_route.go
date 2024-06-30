@@ -18,5 +18,6 @@ func RegisterRoutes(r *gin.RouterGroup) {
 		r.POST("/books", controllers.InsertBookHandler)
 		r.PATCH("/books", controllers.UpdateBookHandler)
 		r.DELETE("/books/:id", controllers.DeleteBookHandler)
+		r.GET("/genres", controllers.GetBookByGenreHandler)
 	}
 }

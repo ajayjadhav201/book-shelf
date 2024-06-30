@@ -17,7 +17,7 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
 
-	routes.RegisterRoutes(r.Group("/v1"))
+	routes.RegisterRoutes(r.Group("/v1/api"))
 	//
 	//
 	log.Println("Server running on port 8080")
