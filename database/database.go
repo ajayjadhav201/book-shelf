@@ -12,14 +12,16 @@ import (
 )
 
 type Database struct {
-	Client     *mongo.Client
-	Collection *mongo.Collection
+	Client *mongo.Client
+	Books  *mongo.Collection
+	Users  *mongo.Collection
 }
 
 func NewDatabase() *Database {
 	client := dbinit()
 	coll := openCollection(client, "books")
-	return &Database{Client: client, Collection: coll}
+	users := openCollection(client, "users")
+	return &Database{Client: client, Books: coll, Users: users}
 }
 
 func dbinit() *mongo.Client {

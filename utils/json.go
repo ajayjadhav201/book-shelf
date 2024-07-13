@@ -1,9 +1,14 @@
 package utils
 
-import "github.com/gin-gonic/gin"
+import (
+	"errors"
+
+	"github.com/gin-gonic/gin"
+)
 
 var (
-	InternalServerError = "Internal server error."
+	InternalServerError  = "Internal server error."
+	MethodNotImplemented = errors.New("method not implemented")
 )
 
 type Response struct {

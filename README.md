@@ -2,11 +2,15 @@
 
 Book Shelf is a web application built with Go, using the Gin web framework and MongoDB as the database. It serves as a book library server where users can manage and retrieve information about various books.
 
+![App Strucutre](assets/book-shelf-api-flow-chart.png)
+
 ## Features
 
 - **Create, Read, Update, Delete (CRUD)**: Manage book records with ease.
 - **Search and Filter**: Search for books by title, author, genre, and more.
 - **JSON API**: Interact with the book data through a JSON-based API.
+
+![App Strucutre](assets/book-shelf-api-sequence-diagram.png)
 
 ## Technologies Used
 

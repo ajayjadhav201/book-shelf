@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/ajayjadhav201/book-shelf/controllers"
+	controller "github.com/ajayjadhav201/book-shelf/controllers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,11 +13,13 @@ func RegisterRoutes(r *gin.RouterGroup) {
 	//
 	r.Use(gin.BasicAuth(accounts))
 	{
-		r.GET("/books", controllers.GetBooksHandler)
-		r.GET("/books/:id", controllers.GetBookByIdHandler)
-		r.POST("/books", controllers.InsertBookHandler)
-		r.PATCH("/books", controllers.UpdateBookHandler)
-		r.DELETE("/books/:id", controllers.DeleteBookHandler)
-		r.GET("/genres", controllers.GetBookByGenreHandler)
+		r.GET("/books", controller.GetBooksHandler)
+		r.GET("/books/:id", controller.GetBookByIdHandler)
+		r.POST("/books", controller.InsertBookHandler)
+		r.PUT("/books", controller.UpdateBookHandler)
+		r.DELETE("/books/:id", controller.DeleteBookHandler)
+		r.GET("/genres/:genre", controller.GetBookByGenreHandler)
+		//
+		// r.GET("/user", controller.)
 	}
 }

@@ -1,25 +1,38 @@
-package models
+package model
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Book struct {
 	ID             primitive.ObjectID `json:"-" bson:"_id,omitempty"`
-	BookID         string             `json:"id,omitempty"`
-	Title          string             `json:"title,omitempty"`
-	Author         []string           `json:"author,omitempty"`
-	Language       string             `json:"language,omitempty"`
-	Publisher      string             `json:"publisher,omitempty"`
-	PublishingDate string             `json:"publishing date,omitempty"`
-	Genre          string             `json:"genre,omitempty"`
-	ISBN           string             `json:"isbn,omitempty"`
-	Edition        string             `json:"edition,omitempty"`
-	Pages          int                `json:"pages,omitempty"`
-	Summery        string             `json:"summery,omitempty"`
-	AboutAuthor    []string           `json:"about author,omitempty"`
+	BookID         string             `json:"book_id,omitempty" bson:"book_id"`
+	Title          string             `json:"title,omitempty" bson:"title"`
+	Price          *float64           `json:"price,omitempty" bson:"price"`
+	Quantity       *int               `json:"quantity,omitempty" bson:"quantity"`
+	Author         []string           `json:"author,omitempty" bson:""`
+	Language       string             `json:"language,omitempty" bson:"language"`
+	Publisher      string             `json:"publisher,omitempty" bson:"publisher"`
+	PublishingDate string             `json:"publishing_date,omitempty" bson:"publishing_date"`
+	Genre          string             `json:"genre,omitempty" bson:"genre"`
+	ISBN           string             `json:"isbn,omitempty" bson:"isbn"`
+	Edition        string             `json:"edition,omitempty" bson:"edition"`
+	Pages          *int               `json:"pages,omitempty" bson:"pages"`
+	Summary        string             `json:"summary,omitempty" bson:"summary"`
+	AboutAuthor    []string           `json:"about_author,omitempty" bson:"about_author"`
+	CreatedAt      *time.Time         `json:"created_at,omitempty" bson:"created_at"`
+	UpdatedAt      *time.Time         `json:"updated_at,omitempty" bson:"updated_at"`
 }
 
 func NewBook() {
 	//
+}
+
+func pages(v int) *int {
+	p := v
+	return &p
 }
 
 func SampleBooks() []*Book {
@@ -35,8 +48,8 @@ func SampleBooks() []*Book {
 			Genre:          "Programming",
 			ISBN:           "9780134190440",
 			Edition:        "1st",
-			Pages:          400,
-			Summery:        "The Go Programming Language is the authoritative resource for any programmer who wants to learn Go. It covers the language, its libraries, and the many ways in which they can be used to build powerful software.",
+			Pages:          pages(400),
+			Summary:        "The Go Programming Language is the authoritative resource for any programmer who wants to learn Go. It covers the language, its libraries, and the many ways in which they can be used to build powerful software.",
 			AboutAuthor:    []string{"Alan A. A. Donovan is a principal engineer at Google, working on Go.", "Brian W. Kernighan is a professor of computer science at Princeton University and co-author of several classic programming books."},
 		},
 		{
@@ -49,8 +62,8 @@ func SampleBooks() []*Book {
 			Genre:          "Personal Finance",
 			ISBN:           "0446677450",
 			Edition:        "1st",
-			Pages:          207,
-			Summery:        "Rich Dad Poor Dad is a book by Robert T. Kiyosaki that advocates the importance of financial literacy, financial independence, and building wealth through investing in assets, real estate investing, starting and owning businesses, as well as increasing one's financial intelligence.",
+			Pages:          pages(207),
+			Summary:        "Rich Dad Poor Dad is a book by Robert T. Kiyosaki that advocates the importance of financial literacy, financial independence, and building wealth through investing in assets, real estate investing, starting and owning businesses, as well as increasing one's financial intelligence.",
 			AboutAuthor:    []string{"Robert T. Kiyosaki is an American businessman and author. He is the founder of Rich Global LLC and the Rich Dad Company, a private financial education company that provides personal finance and business education to people through books and videos."},
 		},
 		{
@@ -63,8 +76,8 @@ func SampleBooks() []*Book {
 			Genre:          "Computer Science",
 			ISBN:           "0262033844",
 			Edition:        "3rd",
-			Pages:          1312,
-			Summery:        "A comprehensive textbook covering a wide range of algorithms in depth.",
+			Pages:          pages(1312),
+			Summary:        "A comprehensive textbook covering a wide range of algorithms in depth.",
 			AboutAuthor:    []string{"Thomas H. Cormen is a Professor of Computer Science.", "Charles E. Leiserson is a Professor of Computer Science and Engineering."},
 		},
 		{
@@ -77,8 +90,8 @@ func SampleBooks() []*Book {
 			Genre:          "Software Engineering",
 			ISBN:           "0132350882",
 			Edition:        "1st",
-			Pages:          464,
-			Summery:        "A guide to producing clean, readable, and maintainable code.",
+			Pages:          pages(464),
+			Summary:        "A guide to producing clean, readable, and maintainable code.",
 			AboutAuthor:    []string{"Robert C. Martin, also known as Uncle Bob, is a software engineer and author."},
 		},
 		{
@@ -91,8 +104,8 @@ func SampleBooks() []*Book {
 			Genre:          "Software Development",
 			ISBN:           "0135957052",
 			Edition:        "2nd",
-			Pages:          352,
-			Summery:        "A guide to the principles and practices of pragmatic programming.",
+			Pages:          pages(352),
+			Summary:        "A guide to the principles and practices of pragmatic programming.",
 			AboutAuthor:    []string{"Andrew Hunt is a programmer and author.", "David Thomas is a software developer and author."},
 		},
 		{
@@ -105,8 +118,8 @@ func SampleBooks() []*Book {
 			Genre:          "Software Engineering",
 			ISBN:           "0201633612",
 			Edition:        "1st",
-			Pages:          416,
-			Summery:        "A catalog of simple and succinct solutions to commonly occurring design problems.",
+			Pages:          pages(416),
+			Summary:        "A catalog of simple and succinct solutions to commonly occurring design problems.",
 			AboutAuthor:    []string{"Erich Gamma is a software engineer and author.", "Richard Helm is a consultant and author."},
 		},
 	}
